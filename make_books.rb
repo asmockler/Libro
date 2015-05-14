@@ -2,11 +2,15 @@ require 'prawn'
 require 'json'
 
 class Book
-	attr_accessor :chapters
+	attr_accessor :chapters, :title, :author
 
-	def initialize (title, author)
-		@title = title
-		@author = author
+	def initialize
+		Kernel::print "Title: "
+		@title = gets.chomp
+
+		Kernel::print "Author: "
+		@author = gets.chomp
+
 		@chapters = Array.new
 	end
 
@@ -46,14 +50,11 @@ class Chapter
 	end
 end
 
-print "Title: "
-title = gets.chomp
-print "Author: "
-author = gets.chomp
+
+book = Book.new
+
 print "File: "
 file = gets.chomp
-
-book = Book.new(title, author)
 
 chapter = nil
 paragraph = ""
