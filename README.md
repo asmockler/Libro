@@ -6,9 +6,9 @@ Currently, upon running the script, it will ask for a title, author, and filenam
 
 For example, try this with the included txt file:
 
-  ruby make_books.rb
-  Title: Persuasion
-  Author: Jane Austen
-  File: persuasion2.txt
+    ruby make_books.rb
+    Title: Persuasion
+    Author: Jane Austen
+    File: persuasion2.txt
   
 And boom - you have a PDF version of Persuasion.
