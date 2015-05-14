@@ -1,55 +1,7 @@
 require 'prawn'
 require 'json'
-
-class Book
-	attr_accessor :chapters, :title, :author
-
-	def initialize
-		Kernel::print "Title: "
-		@title = gets.chomp
-
-		Kernel::print "Author: "
-		@author = gets.chomp
-
-		@chapters = Array.new
-	end
-
-	def add_chapter (chapter)
-		@chapters.push chapter
-	end
-
-	def print
-		puts "\n\n\n#{@title}\n#{@author}"
-		@chapters.each do |c|
-			c.print
-		end
-		puts "\n\n"
-	end
-end
-
-class Chapter
-	@@number = 1
-
-	attr_accessor :text, :chapter_no
-
-	def initialize
-		@chapter_no = @@number
-		@@number += 1
-		@text = Array.new
-	end
-
-	def add_paragraph (text)
-		@text.push text
-	end
-
-	def print
-		puts "\n\nChapter #{@chapter_no}"
-		@text.each do |p|
-			puts "\n#{p}"
-		end
-	end
-end
-
+require_relative 'book'
+require_relative 'chapter'
 
 book = Book.new
 
@@ -87,10 +39,7 @@ chapter.add_paragraph(paragraph)
 book.add_chapter(chapter)
 
 # Print it for testing purposes
-book.print
-# book.chapters.each do |c|
-# 	puts c 
-# end
+# book.print
 
 
 # FOR CREATING PDF
@@ -118,27 +67,3 @@ Prawn::Document.generate("#{book.title}.pdf") do
 		start_new_page()
 	end
 end
-
-# Prawn::Document.generate("hello.pdf") do
-# 	book.chapters.each do |chapter|
-# 		text chapter['heading'],    :align => :center, :size => 20
-# 		move_down 12
-# 		chapter.text.each do |p|
-# 			text p
-# 			move_down 8
-# 		end
-# 		start_new_page()
-# 	end
-# end
-
-
-
-
-
-
-
-
-
-
-
-
