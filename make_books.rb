@@ -95,8 +95,20 @@ book.print
 
 # FOR CREATING PDF
 
-Prawn::Document.generate("#{title}.pdf") do
+Prawn::Document.generate("#{book.title}.pdf") do
+	
+	# Configure Output
+	font "Times-Roman"
+
+	# Title Page
+	move_down 250
+	text book.title,		:align => :center, :size => 50
+	move_down 30
+	text book.author,		:align => :center, :size => 30
+	start_new_page()
+
 	book.chapters.each do |c|
+		move_down 100
 		text "Chapter #{c.chapter_no}", 	:align => :center, :size => 30
 		move_down 20
 		c.text.each do |p|
