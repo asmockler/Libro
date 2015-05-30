@@ -1,5 +1,5 @@
 class Chapter
-	@@number = 1
+	@@number = 0
 
 	attr_accessor :text, :chapter_no
 
